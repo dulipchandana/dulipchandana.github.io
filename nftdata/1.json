@@ -1,0 +1,16 @@
+{
+    "name": "Spacebear Token 🧸",
+    "description": "Introducing the future of Cuteness. A Teddybear Token. Floating in Space. Save them by getting this NFT. Cuddle each one of them. You need them. Buy them now. Also, they are coming from ethereum-blockchain-developer.com",
+    "image": "https://ethereum-blockchain-developer.com/2022-06-nft-truffle-hardhat-foundry/nftdata/spacebear_1.webp",
+    "external_url": "https://ethereum-blockchain-developer.com",
+    "attributes": [
+        {
+            "trait_type": "Artefact", 
+            "value": "Teddybear"
+        },
+        {
+            "trait_type": "Collection", 
+            "value": "Genesis"
+        }
+    ]
+}
