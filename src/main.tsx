@@ -2,6 +2,15 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "../style/main.css";
 
+type Project = {
+    category: string;
+    name: string;
+    description: string;
+} & (
+    | { technologies: string; link?: never }
+    | { link: string; technologies?: never }
+);
+
 const skills = [
     "Java",
     "Python",
@@ -16,7 +25,7 @@ const skills = [
     "Jenkins",
 ];
 
-const projects = [
+const projects: Project[] = [
     {
         category: "Local government · Service-oriented architecture",
         name: "e-LG",
@@ -135,7 +144,7 @@ function About() {
     );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: Project }) {
     return (
         <article className="project">
             <p className="project-meta">{project.category}</p>
@@ -228,7 +237,13 @@ function App() {
     );
 }
 
-createRoot(document.getElementById("root")).render(
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+    throw new Error('Required React root element "#root" was not found.');
+}
+
+createRoot(rootElement).render(
     <StrictMode>
         <App />
     </StrictMode>,
