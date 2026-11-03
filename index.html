@@ -1,1 +1,33 @@
-test-api
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phone</title>
+</head>
+<body>
+    <main>
+        <h1 id="name">Loading...</h1>
+        <p>Time: <time id="time"></time></p>
+        <p id="error" role="alert" hidden></p>
+    </main>
+    <script>
+        fetch("./phone.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Could not load phone data (${response.status}).`);
+                }
+                return response.json();
+            })
+            .then((phone) => {
+                document.getElementById("name").textContent = phone.name;
+                document.getElementById("time").textContent = phone.time;
+            })
+            .catch((error) => {
+                document.getElementById("error").textContent = error.message;
+                document.getElementById("error").hidden = false;
+                document.getElementById("name").textContent = "Phone data unavailable";
+            });
+    </script>
+</body>
+</html>
